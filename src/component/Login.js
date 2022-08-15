@@ -7,7 +7,7 @@ import AuthService from '../services/auth.service';
 
 export default function Login() {
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const [loginId, setId] = useState(''); //const [state저장변수, state 갱신 함수 ] = useState(상태 초기 값);
   const [passwd, setPassword] = useState('');
@@ -68,7 +68,7 @@ export default function Login() {
                     </div>
                     <div>
                         <a href="/" className='join'
-                         onClick={navigate('/Join')}
+                         //onClick={navigate('/Join')}
                        >회원가입</a>
                         <a href="/" className='find'>아이디/비밀번호 찾기</a>
 
