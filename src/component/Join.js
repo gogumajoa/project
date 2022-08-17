@@ -94,7 +94,7 @@ export default function Join(){
                                 className='input_Join'/>
                          <button 
                             type="button"
-                            classname='Join_btn' style={{
+                            className='Join_btn' style={{
                             backgroundColor: '#1F3E1B',
                             color: 'white',
                             fontSize: 15,
