@@ -2,11 +2,12 @@ import axios from "axios";
 //가입 기능 생성
 const API_URL = "http://43.200.205.215:8080/auth"; //api url
 
-const signup = (Id, password) => {
+const signup = (Id, nickname, password) => {
   return axios
     .post(API_URL + "/signup", {
-      Id,
-      password,
+      loginId : Id,
+      nickname : nickname,
+      passwd : password
     })
     .then((response) => { //나중에 새로고침 토큰도 추가해야할듯?
       if (response.data.accessToken) {

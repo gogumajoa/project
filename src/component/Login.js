@@ -1,17 +1,17 @@
-import {BrowserRouter,  Link } from 'react-router-dom';
+import {BrowserRouter,  Link, useNavigate } from 'react-router-dom';
 import "./Login.css";
 import {useState} from 'react';
 import AuthService from '../services/auth.service';
+import { getBottomNavigationUtilityClass } from '@mui/material';
+import axios from 'axios'
 
 //state 생성 후 state를 value로 넣어준다.
 
 export default function Login() {
-
-
+  const navigate=useNavigate();
   const [loginId, setId] = useState(''); //const [state저장변수, state 갱신 함수 ] = useState(상태 초기 값);
   const [passwd, setPassword] = useState('');
 
-  
   //asyns : 비동기함수
  const handleLogin = async (e) => {
     e.preventDefault();
@@ -21,19 +21,20 @@ export default function Login() {
             () => {
               <Link to="/Join"></Link>
               //navigate("/"); //로그인 성공시 메인 페이지 이동 일단은 회원가입으로 가도록 해놧음
-              alert('aa');
+              alert('로그인에 성공하셨습니다.');
               window.location.reload();
             },
             (error) => {
               console.log(error); 
+
             }
           );
         } catch (err) {
           console.log(err);
+      
         }
       };
-    
-	
+    	
 
     return(
         <div className="Login">      
@@ -70,7 +71,6 @@ export default function Login() {
 
                     <div>
                         <Link to="/Join" className='join'>회원가입</Link>
-    
                         <a href="/" className='find'>아이디/비밀번호 찾기</a>
 
                     </div>
@@ -78,7 +78,18 @@ export default function Login() {
                     </div>
                     <div style={{paddingTop: 60}}>
                         <button className='Log_btn'   //로그인 버튼
-                        onSubmit={handleLogin}
+                        onClick={handleLogin}
+                        /*onClick={()=>{
+                          axios.post("http://43.200.205.215:8080/auth/login"),{
+                            loginId: loginId,
+                            passwd : passwd
+                          .then((res)=>{
+                          console.log(res);
+                          navigate('/Main')
+                        })
+                        .catch((error)=>{console.log(error);})
+                          }} 
+                      }*/
                         style={{
                             width: 320,
                             height: 45,

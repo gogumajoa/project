@@ -11,7 +11,7 @@ export default function Join(){
     const [passwordCheck,setPasswordCheck] = useState('');
     const [passwordError,setPasswordError] = useState(false);
 
-    //const navigate=useNavigate();
+    const navigate=useNavigate();
 
     //내용 중복시 에러
     const handleSignup = async(e) => {
@@ -19,7 +19,7 @@ export default function Join(){
         try{
             await authService.signup(Id, password).then(
                 (response)=>{
-                    //navigate("/");
+                    navigate("/Main");
                     window.location.reload();
                 },
                 (error)=>{
@@ -34,9 +34,9 @@ export default function Join(){
 
     const onSubmit = (e) => {
         e.preventDefault();
-        /**검증 로직 만들기
-         * 1. 비밀번호와 비밀번호 체크가 다를 경우를 검증한다
-         */
+            //검증 로직 만들기
+          //1. 비밀번호와 비밀번호 체크가 다를 경우를 검증한다
+
         if(password !== passwordCheck){
             return setPasswordError(true);
         }}
@@ -49,6 +49,7 @@ export default function Join(){
             setPasswordError(e.target.value !== password);
             setPasswordCheck(e.target.value);
         };
+        
         
     return(
         <div className="Join">      
@@ -128,7 +129,7 @@ export default function Join(){
                     </div>
                     <div style={{paddingTop: 60}}>
                         <button className='Join_btn' 
-                        onSubmit={handleSignup}
+                        onClick={handleSignup}
                         style={{
                             width: 320,
                             height: 45,
